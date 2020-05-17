@@ -43,14 +43,23 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY("+QuestionsTable.COLUMN_CATEGORY_ID+ ") REFERENCES " +
                 CategoriesTable.TABLE_NAME+ "("+ CategoriesTable._ID+")"+"ON DELETE CASCADE"+
                 ")";
+        final String SQL_CREATE_PLAYER_TABLE="CREATE TABLE "+
+                PlayerTable.TABLE_NAME+" ( "+
+                PlayerTable._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                PlayerTable.COLUMN_NAME+" TEXT, "+
+                PlayerTable.COLUMN_IMAGE+" INTEGER, "+
+                PlayerTable.COLUMN_POINT+" TEXT "+
+                ")";
         db.execSQL(SQL_CREATE_CATEGORY_TABLE);
         db.execSQL(SQL_CREATE_QUESTION_TABLE);
+        db.execSQL(SQL_CREATE_PLAYER_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+ CategoriesTable.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS "+ QuestionsTable.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+ PlayerTable.TABLE_NAME);
         onCreate(db);
     }
 

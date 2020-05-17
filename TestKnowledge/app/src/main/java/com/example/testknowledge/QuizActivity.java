@@ -1,9 +1,11 @@
 package com.example.testknowledge;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -11,6 +13,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -27,7 +30,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-public class QuizActivity extends AppCompatActivity {
+public class QuizActivity extends AppCompatActivity{
     public static final String EXTRA_SCORE="extraScore";
     private static final long COUNDOWN_IN_MILLIS=30000;
 
@@ -66,6 +69,7 @@ public class QuizActivity extends AppCompatActivity {
     private ArrayList<QuestionDTO> questionDTOList;
     QuestionDAO questionDAO;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +94,6 @@ public class QuizActivity extends AppCompatActivity {
 
             questionCountTotal = questionDTOList.size();
             Collections.shuffle(questionDTOList);
-
             showNextQuestion();
         }else
         {
@@ -255,11 +258,11 @@ public class QuizActivity extends AppCompatActivity {
     }
     private void finishQuiz()
     {
-        Intent resultIntent=new Intent();
-        resultIntent.putExtra(EXTRA_SCORE,score);
-        setResult(RESULT_OK,resultIntent);
-        questionDAO.close();
-        finish();
+            Intent resultIntent=new Intent();
+            resultIntent.putExtra(EXTRA_SCORE,score);
+            setResult(RESULT_OK,resultIntent);
+            questionDAO.close();
+            finish();
     }
 
     @Override

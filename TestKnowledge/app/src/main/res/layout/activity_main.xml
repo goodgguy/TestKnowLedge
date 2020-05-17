@@ -14,38 +14,77 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:text="@string/title"
-        android:textColor="@android:color/black"
+        android:textColor="@color/Paragraph"
         android:textSize="35sp" />
 
     <TextView
+        android:textColor="@color/Paragraph"
         android:id="@+id/txtHighscore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnStart"
+        android:layout_above="@+id/spark_button"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:text="Highscore: 0"
         android:textSize="20sp" />
 
-    <Button
+    <!--<Button
+        android:textColor="@color/buttontext"
+        android:background="@color/button"
         android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Let Go" />
+        android:text="Let Go" />-->
+    <com.varunest.sparkbutton.SparkButton
+        android:id="@+id/spark_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        app:sparkbutton_activeImage="@drawable/play2"
+        app:sparkbutton_inActiveImage="@drawable/play2"
+        app:sparkbutton_iconSize="100dp"
+        app:sparkbutton_primaryColor="@color/Main"
+        app:sparkbutton_secondaryColor="@color/Secondary" />
     <Spinner
         android:id="@+id/spinner_category"
         android:layout_marginTop="16dp"
-        android:layout_alignStart="@+id/btnStart"
-        android:layout_below="@+id/btnStart"
+        android:layout_alignStart="@+id/spark_button"
+        android:layout_below="@+id/spark_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <Spinner
         android:id="@+id/spinner_difficulty"
         android:layout_marginTop="16dp"
-        android:layout_alignStart="@+id/btnStart"
+        android:layout_alignStart="@+id/spark_button"
         android:layout_below="@+id/spinner_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/spinner_difficulty"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.varunest.sparkbutton.SparkButton
+            android:layout_marginLeft="30dp"
+            android:id="@+id/spark_button_laderboard"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            app:sparkbutton_activeImage="@drawable/laderboardicon"
+            app:sparkbutton_inActiveImage="@drawable/laderboardicon"
+            app:sparkbutton_iconSize="50dp"
+            app:sparkbutton_primaryColor="@color/Main"
+            app:sparkbutton_secondaryColor="@color/Main" />
+        <ToggleButton
+            android:layout_marginLeft="20dp"
+            android:textOn=""
+            android:textOff=""
+            android:background="@drawable/custom_toggle_button"
+            android:id="@+id/togvolume"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+    </LinearLayout>
 
 </RelativeLayout>

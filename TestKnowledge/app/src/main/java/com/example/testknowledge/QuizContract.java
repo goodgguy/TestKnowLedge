@@ -19,4 +19,10 @@ public final class QuizContract {
         public static final String COLUMN_DIFFICULTY="difficulty";
         public static final String COLUMN_CATEGORY_ID="category_id";
     }
+    public static class PlayerTable implements BaseColumns{
+        public static final String TABLE_NAME="quiz_player";
+        public static final String COLUMN_NAME="name";
+        public static final String COLUMN_IMAGE="image";
+        public static final String COLUMN_POINT="point";
+    }
 }
