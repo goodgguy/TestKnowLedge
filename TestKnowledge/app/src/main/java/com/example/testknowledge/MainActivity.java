@@ -35,8 +35,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity  implements PlayerDialog.PlayerDialogListener {
-
+public class MainActivity extends AppCompatActivity{
     Button btnStart;
     SparkButton btnStartSpark;
     SparkButton btnLaderboardSpark;
@@ -236,8 +235,6 @@ public class MainActivity extends AppCompatActivity  implements PlayerDialog.Pla
     }
     public void OpenDiaLogName()
     {
-        //PlayerDialog playerDialog=new PlayerDialog();
-        //playerDialog.show(getSupportFragmentManager(),"PlayerDialog");
         AlertDialog.Builder mBuilder=new AlertDialog.Builder(MainActivity.this);
         View mview=getLayoutInflater().inflate(R.layout.layout_dialog,null);
         edplayername=mview.findViewById(R.id.edName);
@@ -273,10 +270,5 @@ public class MainActivity extends AppCompatActivity  implements PlayerDialog.Pla
             }
         });
 
-    }
-
-    @Override
-    public void applyTexts(String name) {
-        playername=name;
     }
 }
