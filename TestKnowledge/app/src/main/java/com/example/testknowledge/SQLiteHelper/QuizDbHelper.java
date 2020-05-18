@@ -50,9 +50,16 @@ public class QuizDbHelper extends SQLiteOpenHelper {
                 PlayerTable.COLUMN_IMAGE+" INTEGER, "+
                 PlayerTable.COLUMN_POINT+" TEXT "+
                 ")";
+        final String SQL_CREATE_USER_TABLE="CREATE TABLE "+
+                UserTable.TABLE_NAME+" ( "+
+                UserTable._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                UserTable.COLUMN_USERNAME+" TEXT, "+
+                UserTable.COLUMN_PASSWORD+" TEXT "+
+                ")";
         db.execSQL(SQL_CREATE_CATEGORY_TABLE);
         db.execSQL(SQL_CREATE_QUESTION_TABLE);
         db.execSQL(SQL_CREATE_PLAYER_TABLE);
+        db.execSQL(SQL_CREATE_USER_TABLE);
     }
 
     @Override
@@ -60,6 +67,7 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ CategoriesTable.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS "+ QuestionsTable.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS "+ PlayerTable.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+ UserTable.TABLE_NAME);
         onCreate(db);
     }
 

@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service android:name=".Service.MusicService">
+        <activity android:name=".ManagerActivity"></activity>
 
-        </service>
+        <service android:name=".Service.MusicService"></service>
+
         <activity android:name=".LaderboardActivity" />
         <activity android:name=".QuizActivity" />
         <activity android:name=".MainActivity">

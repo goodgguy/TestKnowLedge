@@ -3,13 +3,16 @@ package com.example.testknowledge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -23,11 +26,14 @@ import android.widget.ToggleButton;
 import com.example.testknowledge.DAO.CategoryDAO;
 import com.example.testknowledge.DAO.PlayerDAO;
 import com.example.testknowledge.DAO.QuestionDAO;
+import com.example.testknowledge.DAO.UserDAO;
 import com.example.testknowledge.DTO.CategoryDTO;
 import com.example.testknowledge.DTO.PlayerDTO;
 import com.example.testknowledge.DTO.QuestionDTO;
+import com.example.testknowledge.DTO.UserDTO;
 import com.example.testknowledge.SQLiteHelper.QuizDbHelper;
 import com.example.testknowledge.Service.MusicService;
+import com.google.android.material.textfield.TextInputLayout;
 import com.varunest.sparkbutton.SparkButton;
 import com.varunest.sparkbutton.SparkEventListener;
 
@@ -39,6 +45,7 @@ public class MainActivity extends AppCompatActivity{
     Button btnStart;
     SparkButton btnStartSpark;
     SparkButton btnLaderboardSpark;
+    SparkButton btnManagerSpark;
     ToggleButton toggleMusic;
     private static final int REQUEST_CODE_QUIZ=1;
 
@@ -55,7 +62,6 @@ public class MainActivity extends AppCompatActivity{
 
     private String playername="";
     private EditText edplayername;
-
     int[] mangavatar=new int[]{R.drawable.avatar,R.drawable.avatar1,R.drawable.avatar2,R.drawable.avatar3,R.drawable.avatar4};
 
 
@@ -136,12 +142,29 @@ public class MainActivity extends AppCompatActivity{
         });
         toggleMusic.setChecked(true);
         toggleMusic.setChecked(false);
+        btnManagerSpark.setEventListener(new SparkEventListener() {
+            @Override
+            public void onEvent(ImageView button, boolean buttonState) {
+                DialogLogin();
+            }
+
+            @Override
+            public void onEventAnimationEnd(ImageView button, boolean buttonState) {
+
+            }
+
+            @Override
+            public void onEventAnimationStart(ImageView button, boolean buttonState) {
+
+            }
+        });
     }
     private void AnhXa()
     {
         //btnStart=findViewById(R.id.spark_button);
         btnStartSpark=findViewById(R.id.spark_button);
         btnLaderboardSpark=findViewById(R.id.spark_button_laderboard);
+        btnManagerSpark=findViewById(R.id.spark_button_manager);
         textViewHighScore=findViewById(R.id.txtHighscore);
         spinnerDifficulty=findViewById(R.id.spinner_difficulty);
         spinnerCategory=findViewById(R.id.spinner_category);
@@ -172,6 +195,12 @@ public class MainActivity extends AppCompatActivity{
         questionDAO.open();
         questionDAO.fillQuestionTable();
         questionDAO.close();
+        //Admin
+        UserDAO userDAO=new UserDAO(this);
+        userDAO.open();
+        userDAO.load();
+        userDAO.close();
+
     }
 
     @Override
@@ -270,5 +299,44 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+    }
+    public void DialogLogin()
+    {
+        final Dialog dialog=new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.custom_dialog_login);
+        final EditText username=dialog.findViewById(R.id.input_email);
+        final EditText password=dialog.findViewById(R.id.input_password);
+        AppCompatButton btnLogin=dialog.findViewById(R.id.btn_login);
+        dialog.show();
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String getUsername=username.getText().toString();
+                String getPassword=password.getText().toString();
+                if(getUsername.isEmpty()||getPassword.isEmpty())
+                {
+                    Toast.makeText(getApplicationContext(),"Username Password không được để trống",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    UserDAO userDAO=new UserDAO(getApplicationContext());
+                    userDAO.open();
+                    boolean check=userDAO.checkUser(new UserDTO(getUsername,getPassword));
+                    if(check==false)
+                    {
+                        dialog.cancel();
+                        Toast.makeText(getApplicationContext(),"Tài khoản không tồn tại",Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        /*dialog.cancel();
+                        Toast.makeText(getApplicationContext(),"OK",Toast.LENGTH_SHORT).show();*/
+                        
+                    }
+                    userDAO.close();
+                }
+            }
+        });
     }
 }

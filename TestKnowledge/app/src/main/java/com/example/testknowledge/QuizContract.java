@@ -25,4 +25,9 @@ public final class QuizContract {
         public static final String COLUMN_IMAGE="image";
         public static final String COLUMN_POINT="point";
     }
+    public static class UserTable implements BaseColumns{
+        public static final String TABLE_NAME="quiz_user";
+        public static final String COLUMN_USERNAME="username";
+        public static final String COLUMN_PASSWORD="password";
+    }
 }
