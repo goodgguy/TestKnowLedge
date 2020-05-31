@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity{
     SparkButton btnStartSpark;
     SparkButton btnLaderboardSpark;
     SparkButton btnManagerSpark;
+    SparkButton btnCovid19;
     ToggleButton toggleMusic;
     private static final int REQUEST_CODE_QUIZ=1;
 
@@ -158,6 +159,23 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
+        btnCovid19.setEventListener(new SparkEventListener() {
+            @Override
+            public void onEvent(ImageView button, boolean buttonState) {
+                Intent intent=new Intent(MainActivity.this,Covid19Activity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onEventAnimationEnd(ImageView button, boolean buttonState) {
+
+            }
+
+            @Override
+            public void onEventAnimationStart(ImageView button, boolean buttonState) {
+
+            }
+        });
     }
     private void AnhXa()
     {
@@ -165,6 +183,7 @@ public class MainActivity extends AppCompatActivity{
         btnStartSpark=findViewById(R.id.spark_button);
         btnLaderboardSpark=findViewById(R.id.spark_button_laderboard);
         btnManagerSpark=findViewById(R.id.spark_button_manager);
+        btnCovid19=findViewById(R.id.spark_button_covid);
         textViewHighScore=findViewById(R.id.txtHighscore);
         spinnerDifficulty=findViewById(R.id.spinner_difficulty);
         spinnerCategory=findViewById(R.id.spinner_category);

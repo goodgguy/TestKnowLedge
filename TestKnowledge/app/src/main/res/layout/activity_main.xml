@@ -96,6 +96,17 @@
             app:sparkbutton_iconSize="50dp"
             app:sparkbutton_primaryColor="@color/Main"
             app:sparkbutton_secondaryColor="@color/Main" />
+        <com.varunest.sparkbutton.SparkButton
+            android:layout_marginLeft="30dp"
+            android:id="@+id/spark_button_covid"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            app:sparkbutton_activeImage="@drawable/flu"
+            app:sparkbutton_inActiveImage="@drawable/flu"
+            app:sparkbutton_iconSize="50dp"
+            app:sparkbutton_primaryColor="@color/Main"
+            app:sparkbutton_secondaryColor="@color/Main" />
     </LinearLayout>
 
 </RelativeLayout>

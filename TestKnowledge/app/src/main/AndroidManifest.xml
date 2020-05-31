@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.testknowledge">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/choice_icon"
@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ManagerActivity"></activity>
+        <activity android:name=".Covid19Activity"></activity>
+        <activity android:name=".ManagerActivity" />
 
-        <service android:name=".Service.MusicService"></service>
+        <service android:name=".Service.MusicService" />
 
         <activity android:name=".LaderboardActivity" />
         <activity android:name=".QuizActivity" />
