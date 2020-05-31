@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:scrollbars="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:text="ADD QUESTION"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:textSize="30dp"
+        android:textColor="@color/Paragraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/inpt_add_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your Question" />
+    </com.google.android.material.textfield.TextInputLayout>
+   <LinearLayout
+       android:weightSum="10"
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:layout_weight="7"
+           android:orientation="vertical"
+           android:layout_width="0dp"
+           android:layout_height="match_parent">
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="8dp"
+               android:layout_marginBottom="8dp">
+               <EditText android:id="@+id/input_answer1"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="Answer 1" />
+           </com.google.android.material.textfield.TextInputLayout>
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="8dp"
+               android:layout_marginBottom="8dp">
+               <EditText android:id="@+id/input_answer2"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="Answer 2" />
+           </com.google.android.material.textfield.TextInputLayout>
+           <com.google.android.material.textfield.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="8dp"
+               android:layout_marginBottom="8dp">
+               <EditText android:id="@+id/input_answer3"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="Answer 3" />
+           </com.google.android.material.textfield.TextInputLayout>
+           <Spinner
+               android:id="@+id/spinner_category_add"
+               android:layout_marginTop="16dp"
+               android:layout_alignStart="@+id/spark_button"
+               android:layout_below="@+id/spark_button"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+           <Spinner
+               android:id="@+id/spinner_difficulty_add"
+               android:layout_marginTop="16dp"
+               android:layout_alignStart="@+id/spark_button"
+               android:layout_below="@+id/spinner_category"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+           <androidx.appcompat.widget.AppCompatButton
+               android:id="@+id/btn_add"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="24dp"
+               android:layout_marginBottom="24dp"
+               android:padding="12dp"
+               android:background="@color/button"
+               android:textColor="@color/Paragraph"
+               android:text="Add"/>
+       </LinearLayout>
+       <LinearLayout
+           android:orientation="vertical"
+           android:layout_weight="3"
+           android:layout_width="0dp"
+
+           android:layout_height="match_parent">
+           <RadioGroup
+               android:id="@+id/radiogroup_addquestion"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+               <RadioButton
+                   android:checked="true"
+                   android:id="@+id/answerrb1"
+                   android:layout_marginTop="20dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="1" />
+               <RadioButton
+                   android:id="@+id/answerrb2"
+                   android:layout_marginTop="40dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="2" />
+               <RadioButton
+                   android:layout_marginTop="40dp"
+                   android:id="@+id/answerrb3"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="3" />
+           </RadioGroup>
+       </LinearLayout>
+   </LinearLayout>
+</LinearLayout>
+    </ScrollView>

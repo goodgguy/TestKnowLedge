@@ -3,7 +3,9 @@ package com.example.testknowledge.DTO;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class QuestionDTO implements Parcelable {
+import java.io.Serializable;
+
+public class QuestionDTO implements Parcelable, Serializable {
     public static final String DIFFICULTY_EASY="Easy";
     public static final String DIFFICULTY_MEDIUM="Medium";
     public static final String DIFFICULTY_HARD="Hard";

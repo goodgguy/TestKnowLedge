@@ -323,6 +323,7 @@ public class MainActivity extends AppCompatActivity{
                     UserDAO userDAO=new UserDAO(getApplicationContext());
                     userDAO.open();
                     boolean check=userDAO.checkUser(new UserDTO(getUsername,getPassword));
+                    userDAO.close();
                     if(check==false)
                     {
                         dialog.cancel();
@@ -330,11 +331,11 @@ public class MainActivity extends AppCompatActivity{
                     }
                     else
                     {
-                        /*dialog.cancel();
-                        Toast.makeText(getApplicationContext(),"OK",Toast.LENGTH_SHORT).show();*/
+                        dialog.cancel();
+                        Intent intent=new Intent(MainActivity.this,ManagerActivity.class);
+                        startActivity(intent);
                         
                     }
-                    userDAO.close();
                 }
             }
         });

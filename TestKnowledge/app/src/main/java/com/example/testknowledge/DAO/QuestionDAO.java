@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.testknowledge.DTO.CategoryDTO;
 import com.example.testknowledge.DTO.QuestionDTO;
+import com.example.testknowledge.QuizContract;
 import com.example.testknowledge.QuizContract.*;
 import com.example.testknowledge.SQLiteHelper.QuizDbHelper;
 
@@ -49,7 +50,7 @@ public class QuestionDAO {
         QuestionDTO q3=new QuestionDTO("History: A is correct","A","B","C",1,QuestionDTO.DIFFICULTY_EASY, CategoryDTO.HISTORY);
         addQuestion(q3);
     }
-    private boolean addQuestion(QuestionDTO questionDTO)
+    public boolean addQuestion(QuestionDTO questionDTO)
     {
         ContentValues cv=new ContentValues();
         cv.put(QuestionsTable.COLUMN_QUESTION, questionDTO.getQuestion());
@@ -123,5 +124,22 @@ public class QuestionDAO {
         }
         cursor.close();
         return questionDTOList;
+    }
+    public boolean deleteQuestion(int id)
+    {
+        return database.delete(QuestionsTable.TABLE_NAME, QuestionsTable._ID + "=" + id, null) > 0;
+    }
+    public void updateQuestion(QuestionDTO questionDTO)
+    {
+        String sql="UPDATE "+QuestionsTable.TABLE_NAME+" SET "+
+                QuestionsTable.COLUMN_QUESTION+"='"+questionDTO.getQuestion()+"', "
+                +QuestionsTable.COLUMN_OPTION1+"='"+questionDTO.getOption1()+"', "
+                +QuestionsTable.COLUMN_OPTION2+"='"+questionDTO.getOption2()+"', "
+                +QuestionsTable.COLUMN_OPTION3+"='"+questionDTO.getOption3()+"', "
+                +QuestionsTable.COLUMN_ANSWER_NR+"='"+questionDTO.getAnswer()+"', "
+                +QuestionsTable.COLUMN_CATEGORY_ID+"='"+questionDTO.getCategoryID()+"', "
+                +QuestionsTable.COLUMN_DIFFICULTY+"='"+questionDTO.getDifficulty()
+                +"' WHERE "+QuestionsTable._ID+"="+questionDTO.getId();
+        database.execSQL(sql);
     }
 }
