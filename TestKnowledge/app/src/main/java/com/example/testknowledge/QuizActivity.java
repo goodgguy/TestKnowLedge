@@ -11,6 +11,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -218,7 +219,7 @@ public class QuizActivity extends AppCompatActivity{
         rb1.setTextColor(Color.RED);
         rb2.setTextColor(Color.RED);
         rb3.setTextColor(Color.RED);
-
+        Log.e("RADIO BUTTON",String.valueOf(currentQuestion.getAnswer()));
         switch (currentQuestion.getAnswer())
         {
             case 1:
@@ -226,11 +227,11 @@ public class QuizActivity extends AppCompatActivity{
                 textViewQuestion.setText("Answer 1 is correct");
                 break;
             case 2:
-                rb1.setTextColor(Color.GREEN);
+                rb2.setTextColor(Color.GREEN);
                 textViewQuestion.setText("Answer 2 is correct");
                 break;
             case 3:
-                rb1.setTextColor(Color.GREEN);
+                rb3.setTextColor(Color.GREEN);
                 textViewQuestion.setText("Answer 3 is correct");
                 break;
         }

@@ -7,7 +7,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:text="ADD QUESTION"
+        android:text="ADD"
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:textSize="30dp"
@@ -87,7 +87,7 @@
                android:padding="12dp"
                android:background="@color/button"
                android:textColor="@color/Paragraph"
-               android:text="Add"/>
+               android:text="Add Question"/>
        </LinearLayout>
        <LinearLayout
            android:orientation="vertical"
@@ -121,5 +121,31 @@
            </RadioGroup>
        </LinearLayout>
    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/input_add_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your Question" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_add_category"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:background="@color/button"
+            android:textColor="@color/Paragraph"
+            android:text="Add Category"/>
+
+    </LinearLayout>
 </LinearLayout>
     </ScrollView>

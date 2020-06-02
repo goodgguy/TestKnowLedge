@@ -27,6 +27,13 @@
             android:layout_height="50dp"/>
         <Button
             android:onClick="AddFragment"
+            android:background="@drawable/category"
+            android:id="@+id/btnListCategory"
+            android:layout_width="50dp"
+            android:layout_marginLeft="15sp"
+            android:layout_height="50dp"/>
+        <Button
+            android:onClick="AddFragment"
             android:background="@drawable/add"
             android:id="@+id/btnThemQuestion"
             android:layout_width="50dp"

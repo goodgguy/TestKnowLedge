@@ -2,7 +2,9 @@ package com.example.testknowledge.DTO;
 
 import androidx.annotation.NonNull;
 
-public class CategoryDTO {
+import java.io.Serializable;
+
+public class CategoryDTO implements Serializable {
     public static final int PROGRAMING=1;
     public static final int ENGLISH=2;
     public static final int HISTORY=3;

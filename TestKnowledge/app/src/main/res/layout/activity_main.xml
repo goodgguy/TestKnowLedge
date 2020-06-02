@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/colorBackground"
     android:padding="@dimen/padding_parent"
     tools:context=".MainActivity">
@@ -12,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:text="@string/title"
         android:textColor="@color/Paragraph"
@@ -26,87 +28,171 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:text="Highscore: 0"
+        android:layout_gravity="center"
         android:textSize="20sp" />
-
-    <!--<Button
-        android:textColor="@color/buttontext"
-        android:background="@color/button"
-        android:id="@+id/btnStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Let Go" />-->
-    <com.varunest.sparkbutton.SparkButton
-        android:id="@+id/spark_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerInParent="true"
-        app:sparkbutton_activeImage="@drawable/play2"
-        app:sparkbutton_inActiveImage="@drawable/play2"
-        app:sparkbutton_iconSize="100dp"
-        app:sparkbutton_primaryColor="@color/Main"
-        app:sparkbutton_secondaryColor="@color/Secondary" />
-    <Spinner
-        android:id="@+id/spinner_category"
-        android:layout_marginTop="16dp"
-        android:layout_alignStart="@+id/spark_button"
-        android:layout_below="@+id/spark_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Spinner
-        android:id="@+id/spinner_difficulty"
-        android:layout_marginTop="16dp"
-        android:layout_alignStart="@+id/spark_button"
-        android:layout_below="@+id/spinner_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
     <LinearLayout
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/spinner_difficulty"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:padding="@dimen/padding_mainactivity"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/spinner_category"
+            android:layout_alignStart="@+id/spark_button"
+            android:layout_below="@+id/spark_button"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <Spinner
+            android:id="@+id/spinner_difficulty"
+            android:layout_alignStart="@+id/spark_button"
+            android:layout_below="@+id/spinner_category"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_mainactivity"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/margin_left_activity"
+        android:orientation="horizontal">
+
         <com.varunest.sparkbutton.SparkButton
-            android:layout_marginLeft="30dp"
+            android:id="@+id/spark_button"
+            android:layout_width="@dimen/icon_mainactivity"
+            android:layout_height="@dimen/icon_mainactivity"
+            app:sparkbutton_activeImage="@drawable/play2"
+            app:sparkbutton_iconSize="@dimen/icon_mainactivity"
+            app:sparkbutton_inActiveImage="@drawable/play2"
+            app:sparkbutton_primaryColor="@color/Main"
+            app:sparkbutton_secondaryColor="@color/Secondary" />
+
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Play"
+            android:textSize="@dimen/text_size_mainactivity" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_mainactivity"
+        android:layout_marginLeft="@dimen/margin_left_activity"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <com.varunest.sparkbutton.SparkButton
             android:id="@+id/spark_button_laderboard"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
+            android:layout_width="@dimen/icon_mainactivity"
+            android:layout_height="@dimen/icon_mainactivity"
             app:sparkbutton_activeImage="@drawable/laderboardicon"
             app:sparkbutton_inActiveImage="@drawable/laderboardicon"
-            app:sparkbutton_iconSize="50dp"
+            app:sparkbutton_iconSize="@dimen/icon_mainactivity"
             app:sparkbutton_primaryColor="@color/Main"
             app:sparkbutton_secondaryColor="@color/Main" />
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Laderboard"
+            android:textSize="@dimen/text_size_mainactivity" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_mainactivity"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/margin_left_activity"
+        android:orientation="horizontal">
+        <com.varunest.sparkbutton.SparkButton
+            android:id="@+id/spark_button_manager"
+            android:layout_width="@dimen/icon_mainactivity"
+            android:layout_height="@dimen/icon_mainactivity"
+            app:sparkbutton_activeImage="@drawable/manager"
+            app:sparkbutton_inActiveImage="@drawable/manager"
+            app:sparkbutton_iconSize="@dimen/icon_mainactivity"
+            app:sparkbutton_primaryColor="@color/Main"
+            app:sparkbutton_secondaryColor="@color/Main" />
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manager"
+            android:textSize="@dimen/text_size_mainactivity" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_mainactivity"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/margin_left_activity"
+        android:orientation="horizontal">
+        <com.varunest.sparkbutton.SparkButton
+            android:id="@+id/spark_button_covid"
+            android:layout_width="@dimen/icon_mainactivity"
+            android:layout_height="@dimen/icon_mainactivity"
+            app:sparkbutton_activeImage="@drawable/flu"
+            app:sparkbutton_inActiveImage="@drawable/flu"
+            app:sparkbutton_iconSize="@dimen/icon_mainactivity"
+            app:sparkbutton_primaryColor="@color/Main"
+            app:sparkbutton_secondaryColor="@color/Main" />
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Covid-19"
+            android:textSize="@dimen/text_size_mainactivity" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_mainactivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <ToggleButton
-            android:layout_marginLeft="20dp"
             android:textOn=""
             android:textOff=""
             android:background="@drawable/custom_toggle_button"
             android:id="@+id/togvolume"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
-        <com.varunest.sparkbutton.SparkButton
-            android:layout_marginLeft="30dp"
-            android:id="@+id/spark_button_manager"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            app:sparkbutton_activeImage="@drawable/manager"
-            app:sparkbutton_inActiveImage="@drawable/manager"
-            app:sparkbutton_iconSize="50dp"
-            app:sparkbutton_primaryColor="@color/Main"
-            app:sparkbutton_secondaryColor="@color/Main" />
-        <com.varunest.sparkbutton.SparkButton
-            android:layout_marginLeft="30dp"
-            android:id="@+id/spark_button_covid"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            app:sparkbutton_activeImage="@drawable/flu"
-            app:sparkbutton_inActiveImage="@drawable/flu"
-            app:sparkbutton_iconSize="50dp"
-            app:sparkbutton_primaryColor="@color/Main"
-            app:sparkbutton_secondaryColor="@color/Main" />
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+        <TextView
+            android:text="Music"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ToggleButton
+            android:textOn=""
+            android:textOff=""
+            android:layout_marginLeft="25dp"
+            android:background="@drawable/custom_toggle_button"
+            android:id="@+id/language"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+        <TextView
+            android:text="Vietnamese"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ToggleButton
+            android:textOn=""
+            android:textOff=""
+            android:layout_marginLeft="25dp"
+            android:background="@drawable/custom_toggle_button"
+            android:id="@+id/font"
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+        <TextView
+            android:text="VNI-Times"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

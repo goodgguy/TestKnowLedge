@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.testknowledge.Fragment.FragmentAddQuestion;
+import com.example.testknowledge.Fragment.FragmentlistCategory;
 import com.example.testknowledge.Fragment.Fragmentlistquestion;
 
 public class ManagerActivity extends AppCompatActivity {
@@ -33,6 +34,9 @@ public class ManagerActivity extends AppCompatActivity {
             case R.id.btnListQuestion:
                 fragment=new Fragmentlistquestion();
                 break;
+            case R.id.btnListCategory:
+                fragment=new FragmentlistCategory();
+                break;
         }
         fragmentTransaction.replace(R.id.FrameLayOut,fragment);
         fragmentTransaction.commit();
@@ -40,5 +44,10 @@ public class ManagerActivity extends AppCompatActivity {
     public void ThoatFragment(View view)
     {
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

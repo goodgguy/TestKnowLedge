@@ -27,8 +27,8 @@ import com.example.testknowledge.R;
 import java.util.List;
 
 public class FragmentAddQuestion extends Fragment {
-    Button btnAdd;
-    TextView txtQuestion,txtAnswer1,txtAnswer2,txtAnswer3;
+    Button btnAdd,btnAddCategory;
+    TextView txtQuestion,txtAnswer1,txtAnswer2,txtAnswer3,txtCategory;
     RadioGroup rdgAddquestion;
     private Spinner spinnerDifficulty;
     private Spinner spinnerCategory;
@@ -44,6 +44,8 @@ public class FragmentAddQuestion extends Fragment {
         rdgAddquestion=view.findViewById(R.id.radiogroup_addquestion);
         spinnerCategory=view.findViewById(R.id.spinner_category_add);
         spinnerDifficulty=view.findViewById(R.id.spinner_difficulty_add);
+        btnAddCategory=view.findViewById(R.id.btn_add_category);
+        txtCategory=view.findViewById(R.id.input_add_category);
         loadCategoryandDifficulty();
         return view;
     }
@@ -97,6 +99,20 @@ public class FragmentAddQuestion extends Fragment {
                     txtAnswer3.setText("");
                     Toast.makeText(getActivity(),"Thêm thành công",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        btnAddCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String categoryName=txtCategory.getText().toString();
+                CategoryDTO categoryDTO=new CategoryDTO();
+                categoryDTO.setName(categoryName);
+                CategoryDAO categoryDAO=new CategoryDAO(getActivity());
+                categoryDAO.open();
+                categoryDAO.addCategory(categoryDTO);
+                categoryDAO.close();
+                txtCategory.setText("");
+                Toast.makeText(getActivity(),"Thêm thành công",Toast.LENGTH_SHORT).show();
             }
         });
     }
