@@ -16,9 +16,12 @@ import androidx.fragment.app.ListFragment;
 import com.example.testknowledge.Adapter.CategoryAdapter;
 import com.example.testknowledge.DAO.CategoryDAO;
 import com.example.testknowledge.DTO.CategoryDTO;
+import com.example.testknowledge.FontChangeCrawler;
 import com.example.testknowledge.R;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentlistCategory extends ListFragment {
     ArrayList<CategoryDTO> categoryDTOArrayList;
@@ -28,6 +31,9 @@ public class FragmentlistCategory extends ListFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_category_list,container,false);
+        Integer fontRes = getActivity().getSharedPreferences("PREFERENCE", MODE_PRIVATE).getInt("font", R.font.lato);
+        FontChangeCrawler fontChanger = new FontChangeCrawler(getActivity(), fontRes);
+        fontChanger.replaceFonts((ViewGroup) view.getRootView());
         categoryDTOArrayList=new ArrayList<>();
         getArrayCategory();
         categoryAdapter =new CategoryAdapter(getActivity(),R.layout.row_category,categoryDTOArrayList);

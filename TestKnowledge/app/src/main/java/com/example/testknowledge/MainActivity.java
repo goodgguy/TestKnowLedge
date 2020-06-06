@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.fragment.app.DialogFragment;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -12,6 +13,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,9 +33,9 @@ import com.example.testknowledge.DTO.CategoryDTO;
 import com.example.testknowledge.DTO.PlayerDTO;
 import com.example.testknowledge.DTO.QuestionDTO;
 import com.example.testknowledge.DTO.UserDTO;
+import com.example.testknowledge.Fragment.FragmentDialog_Setting;
 import com.example.testknowledge.SQLiteHelper.QuizDbHelper;
 import com.example.testknowledge.Service.MusicService;
-import com.google.android.material.textfield.TextInputLayout;
 import com.varunest.sparkbutton.SparkButton;
 import com.varunest.sparkbutton.SparkEventListener;
 
@@ -41,18 +43,21 @@ import java.io.File;
 import java.util.List;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     Button btnStart;
     SparkButton btnStartSpark;
     SparkButton btnLaderboardSpark;
     SparkButton btnManagerSpark;
     SparkButton btnCovid19;
+    SparkButton btnSetting;
     ToggleButton toggleMusic;
-    private static final int REQUEST_CODE_QUIZ=1;
+    public static final int REQUEST_CODE_QUIZ=1;
 
     public static final String EXTRA_CATEGORY_ID="extraCategoryID";
     public static final String EXTRA_CATEGORY_NAME="extraCategoryName";
     public static final String EXTRA_DIFFICULTY="extraDifficulty";
+    public static final String EXTRA_NOTIFICATION="TUANQUEN";
+    public static final String EXTRA_NAME_NOTIFICATION="extraName";
 
     public static final String SHARED_PREFS="sharedPrefs";
     public static final String KEY_HIGHSCORE="keyHighscore";
@@ -63,13 +68,16 @@ public class MainActivity extends AppCompatActivity{
 
     private String playername="";
     private EditText edplayername;
-    int[] mangavatar=new int[]{R.drawable.avatar,R.drawable.avatar1,R.drawable.avatar2,R.drawable.avatar3,R.drawable.avatar4};
+    static int[] mangavatar=new int[]{R.drawable.avatar,R.drawable.avatar1,R.drawable.avatar2,R.drawable.avatar3,R.drawable.avatar4};
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Integer fontRes = this.getSharedPreferences("PREFERENCE", MODE_PRIVATE).getInt("font", R.font.lato);
+        FontChangeCrawler fontChanger = new FontChangeCrawler(this, fontRes);
+        fontChanger.replaceFonts((ViewGroup) getWindow().getDecorView().getRootView());
         AnhXa();
         if(!doesDatabaseExist(this, QuizDbHelper.DATABASE_NAME))
         {
@@ -176,6 +184,23 @@ public class MainActivity extends AppCompatActivity{
 
             }
         });
+        btnSetting.setEventListener(new SparkEventListener() {
+            @Override
+            public void onEvent(ImageView button, boolean buttonState) {
+                DialogFragment dialogFragment= FragmentDialog_Setting.newInstance();
+                dialogFragment.show(getSupportFragmentManager(),"tag");
+            }
+
+            @Override
+            public void onEventAnimationEnd(ImageView button, boolean buttonState) {
+
+            }
+
+            @Override
+            public void onEventAnimationStart(ImageView button, boolean buttonState) {
+
+            }
+        });
     }
     private void AnhXa()
     {
@@ -188,6 +213,7 @@ public class MainActivity extends AppCompatActivity{
         spinnerDifficulty=findViewById(R.id.spinner_difficulty);
         spinnerCategory=findViewById(R.id.spinner_category);
         toggleMusic=findViewById(R.id.togvolume);
+        btnSetting=findViewById(R.id.spark_button_setting);
     }
     private void start()
     {
@@ -266,7 +292,7 @@ public class MainActivity extends AppCompatActivity{
     {
         SharedPreferences prefs=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
         highScore=prefs.getInt(KEY_HIGHSCORE,0);
-        textViewHighScore.setText("Highscore: "+highScore);
+        textViewHighScore.setText(textViewHighScore.getText().toString()+ highScore);
     }
     private void updateHighScore(int highscoreNew)
     {
@@ -310,6 +336,7 @@ public class MainActivity extends AppCompatActivity{
                     intent.putExtra(EXTRA_CATEGORY_ID,categoryID);
                     intent.putExtra(EXTRA_CATEGORY_NAME,categoryName);
                     intent.putExtra(EXTRA_DIFFICULTY,difficulty);
+                    intent.putExtra(EXTRA_NOTIFICATION,"TQ");
                     startActivityForResult(intent,REQUEST_CODE_QUIZ);
                 }
                 else {

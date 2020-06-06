@@ -17,9 +17,12 @@ import androidx.fragment.app.ListFragment;
 import com.example.testknowledge.Adapter.QuestionAdapter;
 import com.example.testknowledge.DAO.QuestionDAO;
 import com.example.testknowledge.DTO.QuestionDTO;
+import com.example.testknowledge.FontChangeCrawler;
 import com.example.testknowledge.R;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class Fragmentlistquestion extends ListFragment {
     ArrayList<QuestionDTO> questionDTOArrayList;
@@ -28,6 +31,9 @@ public class Fragmentlistquestion extends ListFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_question_list,container,false);
+        Integer fontRes = getActivity().getSharedPreferences("PREFERENCE", MODE_PRIVATE).getInt("font", R.font.lato);
+        FontChangeCrawler fontChanger = new FontChangeCrawler(getActivity(), fontRes);
+        fontChanger.replaceFonts((ViewGroup) view.getRootView());
         questionDTOArrayList=new ArrayList<>();
         getArrayQuestion();
         questionAdapter=new QuestionAdapter(getActivity(),R.layout.row_question,questionDTOArrayList);

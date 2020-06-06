@@ -22,9 +22,12 @@ import com.example.testknowledge.DAO.CategoryDAO;
 import com.example.testknowledge.DAO.QuestionDAO;
 import com.example.testknowledge.DTO.CategoryDTO;
 import com.example.testknowledge.DTO.QuestionDTO;
+import com.example.testknowledge.FontChangeCrawler;
 import com.example.testknowledge.R;
 
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class FragmentDialogEditQuestion extends DialogFragment {
@@ -50,6 +53,9 @@ public class FragmentDialogEditQuestion extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_dialog_edit,container,false);
+        Integer fontRes = getActivity().getSharedPreferences("PREFERENCE", MODE_PRIVATE).getInt("font", R.font.lato);
+        FontChangeCrawler fontChanger = new FontChangeCrawler(getActivity(), fontRes);
+        fontChanger.replaceFonts((ViewGroup) view.getRootView());
         Edit=view.findViewById(R.id.btn_edit);
         edQuestion=view.findViewById(R.id.inpt_edit_question);
         edAnswer1=view.findViewById(R.id.edit_answer1);

@@ -22,9 +22,12 @@ import com.example.testknowledge.DAO.CategoryDAO;
 import com.example.testknowledge.DAO.QuestionDAO;
 import com.example.testknowledge.DTO.CategoryDTO;
 import com.example.testknowledge.DTO.QuestionDTO;
+import com.example.testknowledge.FontChangeCrawler;
 import com.example.testknowledge.R;
 
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentAddQuestion extends Fragment {
     Button btnAdd,btnAddCategory;
@@ -36,6 +39,9 @@ public class FragmentAddQuestion extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_add_question,container,false);
+        Integer fontRes = getActivity().getSharedPreferences("PREFERENCE", MODE_PRIVATE).getInt("font", R.font.lato);
+        FontChangeCrawler fontChanger = new FontChangeCrawler(getActivity(), fontRes);
+        fontChanger.replaceFonts((ViewGroup) view.getRootView());
         btnAdd=view.findViewById(R.id.btn_add);
         txtQuestion=view.findViewById(R.id.inpt_add_question);
         txtAnswer1=view.findViewById(R.id.input_answer1);

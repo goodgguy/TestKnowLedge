@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -20,7 +21,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.testknowledge.DAO.PlayerDAO;
 import com.example.testknowledge.DAO.QuestionDAO;
+import com.example.testknowledge.DTO.PlayerDTO;
 import com.example.testknowledge.DTO.QuestionDTO;
 import com.example.testknowledge.SQLiteHelper.QuizDbHelper;
 
@@ -30,6 +33,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 public class QuizActivity extends AppCompatActivity{
     public static final String EXTRA_SCORE="extraScore";
@@ -66,26 +70,60 @@ public class QuizActivity extends AppCompatActivity{
     private int score;
     private boolean answered;
     private long backPressTime;
-
     private ArrayList<QuestionDTO> questionDTOList;
     QuestionDAO questionDAO;
+
+    //NOTIFICATION
+    private String notification_check="";
+    private String notification_name="";
+
+    //LANGUAGE-BUTTON
+    String strConfirm,strNext,strFinish;
+    String strAsw1,strAsw2,strAsw3;
+    //QUESTIONCOUNT
+    String StrtextviewQuestionCount;
+    String StrScore;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        Integer fontRes = this.getSharedPreferences("PREFERENCE", MODE_PRIVATE).getInt("font", R.font.lato);
+        FontChangeCrawler fontChanger = new FontChangeCrawler(this, fontRes);
+        fontChanger.replaceFonts((ViewGroup) getWindow().getDecorView().getRootView());
         AnhXa();
-
+        StrtextviewQuestionCount=textViewQuestionCount.getText().toString();
+        StrScore=textViewScore.getText().toString();
         textCorlorDefaultrb=rb1.getTextColors();
         textColorDefaultCd=textViewCountdown.getTextColors();
         Intent intent=getIntent();
         int categoryID=intent.getIntExtra(MainActivity.EXTRA_CATEGORY_ID,0);
         String categoryName=intent.getStringExtra(MainActivity.EXTRA_CATEGORY_NAME);
         String difficulty=intent.getStringExtra(MainActivity.EXTRA_DIFFICULTY);
-
-        textViewCategory.setText("Category: "+categoryName);
-        textViewDifficulty.setText("Difficulty: "+difficulty);
+        notification_check=intent.getStringExtra(MainActivity.EXTRA_NOTIFICATION);
+        notification_name=intent.getStringExtra(MainActivity.EXTRA_NAME_NOTIFICATION);
+        Log.e("CHECK NOTIFICATION",notification_check+"     "+notification_name);
+        if(textViewCategory.getText().toString().compareTo("Category: ")==0)
+        {
+            strConfirm="Confirm";
+            strFinish="Finish";
+            strNext="Next";
+            strAsw1="Answer 1 is correct";
+            strAsw2="Answer 2 is correct";
+            strAsw3="Answer 3 is correct";
+        }
+        else
+        {
+            strConfirm="Kiểm Tra";
+            strFinish="Kết Thúc";
+            strNext="Tiếp Theo";
+            strAsw1="Đáp Án là Câu 1";
+            strAsw2="Đáp Án là Câu 2";
+            strAsw3="Đáp Án là Câu 3";
+        }
+        textViewCategory.setText(textViewCategory.getText().toString()+categoryName);
+        textViewDifficulty.setText(textViewDifficulty.getText().toString()+difficulty);
 
 
         if (savedInstanceState == null) {
@@ -145,7 +183,7 @@ public class QuizActivity extends AppCompatActivity{
         rbGroup.clearCheck();
         if(questionCounter!=questionCountTotal)
         {
-            textViewQuestionCount.setText("Question :"+(questionCounter+1)+"/"+questionCountTotal);
+            textViewQuestionCount.setText(StrtextviewQuestionCount+(questionCounter+1)+"/"+questionCountTotal);
         }
         if(questionCounter<questionCountTotal)
         {
@@ -157,10 +195,10 @@ public class QuizActivity extends AppCompatActivity{
             questionCounter++;
             if(questionCounter!=questionCountTotal)
             {
-                textViewQuestionCount.setText("Question: "+questionCounter+"/"+questionCountTotal);
+                textViewQuestionCount.setText(StrtextviewQuestionCount+questionCounter+"/"+questionCountTotal);
             }
             answered=false;
-            btnConfirmNext.setText("Confirm");
+            btnConfirmNext.setText(strConfirm);
             timeLeftMillis=COUNDOWN_IN_MILLIS;
             startCoundown();
         }else
@@ -210,7 +248,7 @@ public class QuizActivity extends AppCompatActivity{
         if(answerNr==currentQuestion.getAnswer())
         {
             score++;
-            textViewScore.setText("Score: "+score);
+            textViewScore.setText(StrScore+score);
         }
         showSolution();
     }
@@ -237,10 +275,10 @@ public class QuizActivity extends AppCompatActivity{
         }
         if(questionCounter<questionCountTotal)
         {
-            btnConfirmNext.setText("Next");
+            btnConfirmNext.setText(strNext);
         }else
         {
-            btnConfirmNext.setText("Finish");
+            btnConfirmNext.setText(strFinish);
         }
     }
     private void AnhXa()
@@ -259,11 +297,22 @@ public class QuizActivity extends AppCompatActivity{
     }
     private void finishQuiz()
     {
-            Intent resultIntent=new Intent();
-            resultIntent.putExtra(EXTRA_SCORE,score);
-            setResult(RESULT_OK,resultIntent);
-            questionDAO.close();
-            finish();
+        if(notification_check.compareTo("TUANCUTE")==0)
+        {
+            Log.e("Check Notify","Thành công rồi");
+            Random rd=new Random();
+            PlayerDTO playerDTO=new PlayerDTO(notification_name,MainActivity.mangavatar[rd.nextInt(5)],score);
+            PlayerDAO playerDAO=new PlayerDAO(getApplicationContext());
+            playerDAO.open();
+            playerDAO.addPlayeṛ̣̣̣(playerDTO);
+            playerDAO.close();
+
+        }
+        Intent resultIntent=new Intent();
+        resultIntent.putExtra(EXTRA_SCORE,score);
+        setResult(RESULT_OK,resultIntent);
+        questionDAO.close();
+        finish();
     }
 
     @Override

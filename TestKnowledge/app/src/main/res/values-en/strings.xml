@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TestKnowledge</string>
+    <string name="Amatic_SC">Amatic_SC</string>
+    <string name="change_language_title">" Change language"</string>
+    <string name="default_font">" Default font"</string>
+    <string name="font">Font</string>
+    <string name="language_english">English</string>
+    <string name="language_vietnamese">VietNam</string>
+    <string name="save">Establish</string>
+    <string name="title">Test Knowledge</string>
+    <string name="txtCovid19">Covid-19 Disease</string>
+    <string name="txtLaderboard">Laderboard</string>
+    <string name="txtmanager">Manager</string>
+    <string name="txtMusic">Music</string>
+    <string name="txtPlay">Play</string>
+    <string name="txtSetting">Setting</string>
+    <string name="txtHighScore">"High Score: "</string>
+    <string name="name_dialog">Name</string>
+    <string name="txtCategory">"Category: "</string>
+    <string name="txtDifficulty">"Difficulty: "</string>
+    <string name="txtQuestionCount">"Question: "</string>
+    <string name="txtScore">"Score: "</string>
+    <string name="btnConfirm">Confirm</string>
+</resources>

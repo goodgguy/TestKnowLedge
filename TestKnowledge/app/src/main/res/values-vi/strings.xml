@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TestKnowledge</string>
+    <string name="Amatic_SC">Amatic_SC</string>
+    <string name="change_language_title">Thay Đổi Ngôn Ngữ</string>
+    <string name="default_font">Font mặc định</string>
+    <string name="font">Font Chữ</string>
+    <string name="language_english">Tiếng Anh</string>
+    <string name="language_vietnamese">Việt Nam</string>
+    <string name="save">Thiết lập</string>
+    <string name="title">Test Knowledge</string>
+    <string name="txtCovid19">Dịch Bệnh Covid-19</string>
+    <string name="txtLaderboard">Bảng Xếp Hạng</string>
+    <string name="txtMusic">Âm Thanh</string>
+    <string name="txtPlay">Chơi</string>
+    <string name="txtSetting">Cài Đặt</string>
+    <string name="txtmanager">Quản Lý</string>
+    <string name="txtHighScore">"Điểm Cao Nhất: "</string>
+    <string name="name_dialog">Tên</string>
+    <string name="txtQuestionCount">"Câu hỏi thứ: "</string>
+    <string name="txtScore">"Điểm: "</string>
+    <string name="txtDifficulty">"Độ Khó: "</string>
+    <string name="txtCategory">"Lĩnh Vực: "</string>
+    <string name="btnConfirm">Kiểm Tra</string>
+</resources>

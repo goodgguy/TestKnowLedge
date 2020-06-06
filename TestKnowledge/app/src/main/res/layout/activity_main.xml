@@ -27,7 +27,7 @@
         android:layout_above="@+id/spark_button"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:text="Highscore: 0"
+        android:text="@string/txtHighScore"
         android:layout_gravity="center"
         android:textSize="20sp" />
     <LinearLayout
@@ -74,7 +74,7 @@
             android:layout_marginLeft="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Play"
+            android:text="@string/txtPlay"
             android:textSize="@dimen/text_size_mainactivity" />
     </LinearLayout>
     <LinearLayout
@@ -97,7 +97,7 @@
             android:layout_marginLeft="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Laderboard"
+            android:text="@string/txtLaderboard"
             android:textSize="@dimen/text_size_mainactivity" />
     </LinearLayout>
     <LinearLayout
@@ -120,7 +120,7 @@
             android:layout_marginLeft="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Manager"
+            android:text="@string/txtmanager"
             android:textSize="@dimen/text_size_mainactivity" />
     </LinearLayout>
     <LinearLayout
@@ -143,7 +143,7 @@
             android:layout_marginLeft="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Covid-19"
+            android:text="@string/txtCovid19"
             android:textSize="@dimen/text_size_mainactivity" />
     </LinearLayout>
 
@@ -158,38 +158,27 @@
             android:textOff=""
             android:background="@drawable/custom_toggle_button"
             android:id="@+id/togvolume"
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
         <TextView
-            android:text="Music"
+            android:text="@string/txtMusic"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <ToggleButton
-            android:textOn=""
-            android:textOff=""
+        <com.varunest.sparkbutton.SparkButton
             android:layout_marginLeft="25dp"
-            android:background="@drawable/custom_toggle_button"
-            android:id="@+id/language"
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
+            android:id="@+id/spark_button_setting"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            app:sparkbutton_activeImage="@drawable/setting"
+            app:sparkbutton_inActiveImage="@drawable/setting"
+            app:sparkbutton_iconSize="@dimen/icon_mainactivity"
+            app:sparkbutton_primaryColor="@color/Main"
+            android:scaleType="fitXY"
+            app:sparkbutton_secondaryColor="@color/Main" />
         <TextView
-            android:text="Vietnamese"
-            android:layout_marginLeft="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <ToggleButton
-            android:textOn=""
-            android:textOff=""
-            android:layout_marginLeft="25dp"
-            android:background="@drawable/custom_toggle_button"
-            android:id="@+id/font"
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
-        <TextView
-            android:text="VNI-Times"
+            android:text="@string/txtSetting"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
