@@ -69,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
     private String playername="";
     private EditText edplayername;
     static int[] mangavatar=new int[]{R.drawable.avatar,R.drawable.avatar1,R.drawable.avatar2,R.drawable.avatar3,R.drawable.avatar4};
+    //MODE_MUSIC
+    public static final String SHAREPREF_STATE_MUSIC="statemusic";
+    public static final String BOOLEAN_STATE_MUSIC="music";
 
 
     @Override
@@ -87,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         loadDifficultyLevel();
         loadHighScore();
         buttonListener();
+        Load_Music();
 /*        btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,16 +145,18 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked)
                 {
+                    Save_Music(true);
                     stopService(intentMusic);
                 }
                 else
                 {
+                    Save_Music(false);
                     startService(intentMusic);
                 }
             }
         });
-        toggleMusic.setChecked(true);
-        toggleMusic.setChecked(false);
+        /*toggleMusic.setChecked(true);
+        toggleMusic.setChecked(false);*/
         btnManagerSpark.setEventListener(new SparkEventListener() {
             @Override
             public void onEvent(ImageView button, boolean buttonState) {
@@ -394,5 +400,22 @@ public class MainActivity extends AppCompatActivity {
         super.onRestart();
         finish();
         startActivity(getIntent());
+    }
+    private void Load_Music()
+    {
+        boolean check=getSharedPreferences(SHAREPREF_STATE_MUSIC,MODE_PRIVATE).getBoolean(BOOLEAN_STATE_MUSIC,true);
+        toggleMusic.setChecked(check);
+        if(!check)
+        {
+            toggleMusic.setChecked(true);
+            toggleMusic.setChecked(false);
+        }
+    }
+    private void Save_Music(boolean check)
+    {
+        getSharedPreferences(SHAREPREF_STATE_MUSIC, MODE_PRIVATE)
+                .edit()
+                .putBoolean(BOOLEAN_STATE_MUSIC,check)
+                .apply();
     }
 }

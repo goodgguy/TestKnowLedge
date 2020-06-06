@@ -41,4 +41,10 @@
     <string name="strbinhiem">Infected</string>
     <string name="strbinhphuc">Recover</string>
     <string name="strtuvong">Dead</string>
+    <string name="btndunglai_clock">Set Again</string>
+    <string name="btnhengio_clock">Start</string>
+    <string name="ngaythi_clock">Date Exam:</string>
+    <string name="txtname_clock">Name</string>
+    <string name="txtthongtin_clock">Infomation</string>
+    <string name="ten_clock">Name:</string>
 </resources>

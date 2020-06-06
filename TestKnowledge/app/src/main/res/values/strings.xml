@@ -49,4 +49,11 @@
     <string name="strbinhiem">Bị Nhiễm</string>
     <string name="strtuvong">Tử Vong</string>
     <string name="strbinhphuc">Bình Phục</string>
+    //FARGMENT_CLOCK
+    <string name="txtname_clock">Tên</string>
+    <string name="btnhengio_clock">Hẹn Giờ</string>
+    <string name="btndunglai_clock">Đặt Lại</string>
+    <string name="txtthongtin_clock">Thông Tin Thí Sinh</string>
+    <string name="ten_clock">Tên:</string>
+    <string name="ngaythi_clock">Ngày Thi: </string>
 </resources>

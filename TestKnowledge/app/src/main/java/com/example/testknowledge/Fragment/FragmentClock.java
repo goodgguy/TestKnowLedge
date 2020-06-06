@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,9 +47,21 @@ public class FragmentClock extends Fragment {
     AlarmManager alarmManager;
     Intent intent;
     PendingIntent pendingIntent;
+    String strdate="";
+    String strname="";
     //===========================
     //NOTIFICATION=====================
     //=================================
+    public static final String SHARE_PREFES_STATE_BUTTON_CLOCK="statebuttonclock";
+    public static final String BTN_HENGIO="btnhengio";
+    public static final String BTN_DUNGLAT="btndunglai";
+    public static final String ED_NAME="ed_name";
+    public static final String TIME_PICKER="time_picker";
+    public static final String DIFFICULTY="difficulty";
+    public static final String CATEGORY="category";
+    public static final String NAME_EXAM="nameexam";
+    public static final String DATA_EXAM="dateexam";
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -69,9 +82,14 @@ public class FragmentClock extends Fragment {
         intent=new Intent(getActivity(), AlarmReceiver.class);
         loadCategory();
         loadDifficultyLevel();
-        btnHenGio.setEnabled(true);
+        //BUTTON_SATE
+        /*btnHenGio.setEnabled(true);
         btnDunglai.setEnabled(false);
         edName.setEnabled(true);
+        timePicker.setEnabled(true);
+        spinnerCategory.setEnabled(true);
+        spinnerDifficulty.setEnabled(true);*/
+        LoadData();
         return view;
     }
 
@@ -115,6 +133,8 @@ public class FragmentClock extends Fragment {
                 //==============================================
                 txtShowName.setText(name);
                 txtShowTime.setText(str_gio+":"+str_phut);
+                strdate=str_gio+":"+str_phut;
+                strname=name;
                 //DISABLE==========
                 btnHenGio.setEnabled(false);
                 btnDunglai.setEnabled(true);
@@ -122,18 +142,26 @@ public class FragmentClock extends Fragment {
                 spinnerCategory.setEnabled(false);
                 spinnerDifficulty.setEnabled(false);
                 timePicker.setEnabled(false);
+                SaveData(false,true,false,false,false,false);
             }
         });
         btnDunglai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pendingIntent.cancel();
+                if(pendingIntent!=null)
+                {
+                    pendingIntent.cancel();
+                }
+
                 btnHenGio.setEnabled(true);
                 btnDunglai.setEnabled(false);
                 edName.setEnabled(true);
                 spinnerCategory.setEnabled(true);
                 spinnerDifficulty.setEnabled(true);
                 timePicker.setEnabled(true);
+                txtShowName.setText("");
+                txtShowTime.setText("");
+                SaveData(true,false,true,true,true,true);
             }
         });
     }
@@ -155,5 +183,32 @@ public class FragmentClock extends Fragment {
                 R.layout.support_simple_spinner_dropdown_item,difficultyLevels);
         adapterDifficulty.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinnerDifficulty.setAdapter(adapterDifficulty);
+    }
+    private void SaveData(boolean btnhengio,boolean btndunglai,boolean ed_name,boolean category,boolean difficulty,boolean time_picker)
+    {
+        SharedPreferences sharedPreferences=getContext().getSharedPreferences(SHARE_PREFES_STATE_BUTTON_CLOCK,MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putBoolean(BTN_HENGIO,btnhengio);
+        editor.putBoolean(BTN_DUNGLAT,btndunglai);
+        editor.putBoolean(ED_NAME,ed_name);
+        editor.putBoolean(CATEGORY,category);
+        editor.putBoolean(DIFFICULTY,difficulty);
+        editor.putBoolean(TIME_PICKER,time_picker);
+        editor.putString(DATA_EXAM,strdate);
+        editor.putString(NAME_EXAM,strname);
+        editor.apply();
+    }
+    private void LoadData()
+    {
+        SharedPreferences sharedPreferences=getContext().getSharedPreferences(SHARE_PREFES_STATE_BUTTON_CLOCK,MODE_PRIVATE);
+        btnHenGio.setEnabled(sharedPreferences.getBoolean(BTN_HENGIO,true));
+        btnDunglai.setEnabled(sharedPreferences.getBoolean(BTN_DUNGLAT,false));
+        edName.setEnabled(sharedPreferences.getBoolean(ED_NAME,true));
+        timePicker.setEnabled(sharedPreferences.getBoolean(TIME_PICKER,true));
+        spinnerCategory.setEnabled(sharedPreferences.getBoolean(CATEGORY,true));
+        spinnerDifficulty.setEnabled(sharedPreferences.getBoolean(DIFFICULTY,true));
+        txtShowName.setText(sharedPreferences.getString(NAME_EXAM,""));
+        txtShowTime.setText(sharedPreferences.getString(DATA_EXAM,""));
+
     }
 }
