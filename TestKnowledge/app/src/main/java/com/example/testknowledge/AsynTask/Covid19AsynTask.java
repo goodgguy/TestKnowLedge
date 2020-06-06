@@ -24,12 +24,21 @@ public class Covid19AsynTask extends AsyncTask<String,Void,Void> {
     String binhiem="";
     String tuvong="";
     String binhphuc="";
+    String strbinhiem="Bị Nhiễm: ";
+    String strtuvong="Tử Vong: ";
+    String strbinhphuc="Bình Phục: ";
 
     public Covid19AsynTask(TextView txtbinhiem, TextView txttuvong, TextView txtbinhphuc)
     {
         this.txtbinhiem=txtbinhiem;
         this.txtbinhphuc=txtbinhphuc;
         this.txttuvong=txttuvong;
+        if(txttuvong.getText().toString().compareTo("Tử Vong")!=0)
+        {
+            strbinhiem="Infected: ";
+            strtuvong="Dead: ";
+            strbinhphuc="Recover: ";
+        }
     }
 
     @Override
@@ -63,8 +72,8 @@ public class Covid19AsynTask extends AsyncTask<String,Void,Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        txtbinhiem.setText("Ca nhiễm: "+binhiem);
-        txttuvong.setText("Tử vong: "+tuvong);
-        txtbinhphuc.setText("Bình phục: "+binhphuc);
+        txtbinhiem.setText(strbinhiem+binhiem);
+        txttuvong.setText(strtuvong+tuvong);
+        txtbinhphuc.setText(strbinhphuc+binhphuc);
     }
 }

@@ -7,7 +7,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:text="ADD"
+        android:text="@string/addcontent"
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
         android:textSize="30dp"
@@ -22,7 +22,7 @@
         <EditText android:id="@+id/inpt_add_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Your Question" />
+            android:hint="@string/questioncontent" />
     </com.google.android.material.textfield.TextInputLayout>
    <LinearLayout
        android:weightSum="10"
@@ -42,7 +42,7 @@
                <EditText android:id="@+id/input_answer1"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:hint="Answer 1" />
+                   android:hint="@string/optition1content" />
            </com.google.android.material.textfield.TextInputLayout>
            <com.google.android.material.textfield.TextInputLayout
                android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                <EditText android:id="@+id/input_answer2"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:hint="Answer 2" />
+                   android:hint="@string/optition2content"/>
            </com.google.android.material.textfield.TextInputLayout>
            <com.google.android.material.textfield.TextInputLayout
                android:layout_width="match_parent"
@@ -62,7 +62,7 @@
                <EditText android:id="@+id/input_answer3"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:hint="Answer 3" />
+                   android:hint="@string/optition3content" />
            </com.google.android.material.textfield.TextInputLayout>
            <Spinner
                android:id="@+id/spinner_category_add"
@@ -87,7 +87,7 @@
                android:padding="12dp"
                android:background="@color/button"
                android:textColor="@color/Paragraph"
-               android:text="Add Question"/>
+               android:text="@string/btnaddquestion"/>
        </LinearLayout>
        <LinearLayout
            android:orientation="vertical"
@@ -133,7 +133,7 @@
             <EditText android:id="@+id/input_add_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Your Question" />
+                android:hint="@string/categorycontent" />
         </com.google.android.material.textfield.TextInputLayout>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_add_category"
@@ -144,7 +144,7 @@
             android:padding="12dp"
             android:background="@color/button"
             android:textColor="@color/Paragraph"
-            android:text="Add Category"/>
+            android:text="@string/btnaddcategory"/>
 
     </LinearLayout>
 </LinearLayout>

@@ -22,4 +22,23 @@
     <string name="txtDifficulty">"Độ Khó: "</string>
     <string name="txtCategory">"Lĩnh Vực: "</string>
     <string name="btnConfirm">Kiểm Tra</string>
+    <string name="password">Mật Khẩu</string>
+    <string name="username">Tên Đăng Nhập</string>
+    <string name="btnlogin">Xác Nhận</string>
+    <string name="laderboard">Bảng Xếp Hạng</string>
+    <string name="add">Thêm Mới</string>
+    <string name="categorylist">Danh sách lĩnh vực</string>
+    <string name="clock">Hẹn giờ thi</string>
+    <string name="questionlist">Danh sách câu hỏi</string>
+    <string name="addcontent">Thêm</string>
+    <string name="btnaddcategory">Thêm Lĩnh Vực</string>
+    <string name="btnaddquestion">Thêm Câu Hỏi</string>
+    <string name="categorycontent">Lĩnh Vực</string>
+    <string name="optition1content">Câu Trả Lời 1</string>
+    <string name="optition2content">Câu Trả Lời 2</string>
+    <string name="optition3content">Câu Trả Lời 3</string>
+    <string name="questioncontent">Câu Hỏi</string>
+    <string name="strbinhiem">Bị Nhiễm</string>
+    <string name="strbinhphuc">Bình Phục</string>
+    <string name="strtuvong">Tử Vong</string>
 </resources>

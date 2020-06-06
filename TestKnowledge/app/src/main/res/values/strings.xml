@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TestKnowledge</string>
     <string name="title">Test Knowledge</string>
-    
+
     <string name="change_language_title">Thay Đổi Ngôn Ngữ</string>
     <string name="language_english">Tiếng Anh</string>
     <string name="language_vietnamese">Việt Nam</string>
@@ -26,4 +26,27 @@
     <string name="txtCategory">Lĩnh Vực: </string>
     <string name="txtDifficulty">Độ Khó: </string>
     <string name="btnConfirm">Kiểm Tra</string>
+    //LOGIN_FORM
+    <string name="username">Tên Đăng nhập</string>
+    <string name="password">Mật Khẩu</string>
+    <string name="btnlogin">Xác Nhận</string>
+    <string name="laderboard">Bảng Xếp Hạng</string>
+    //MANAGER_FORM
+    <string name="questionlist">Danh sách câu hỏi</string>
+    <string name="categorylist">Danh sách lĩnh vực</string>
+    <string name="add">Thêm Mới</string>
+    <string name="clock">Hẹn giờ thi</string>
+    //ADD_FRAGMENT
+    <string name="addcontent">Thêm</string>
+    <string name="questioncontent">Câu Hỏi</string>
+    <string name="optition1content">Câu Trả Lời 1</string>
+    <string name="optition2content">Câu Trả Lời 2</string>
+    <string name="optition3content">Câu Trả Lời 3</string>
+    <string name="btnaddquestion">Thêm Câu Hỏi</string>
+    <string name="categorycontent">Lĩnh Vực</string>
+    <string name="btnaddcategory">Thêm Lĩnh Vực</string>
+    //COVID-19
+    <string name="strbinhiem">Bị Nhiễm</string>
+    <string name="strtuvong">Tử Vong</string>
+    <string name="strbinhphuc">Bình Phục</string>
 </resources>

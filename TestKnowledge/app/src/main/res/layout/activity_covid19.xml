@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0f0e17"
     android:orientation="vertical"
     tools:context=".Covid19Activity">
     <TextView
         android:text="COVID-19"
-        android:textColor="@color/Paragraph"
+        android:textColor="#fffffe"
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="40dp"
@@ -27,7 +28,7 @@
             android:layout_height="100dp">
             <TextView
                 android:layout_marginTop="10dp"
-                android:text="Bị nhiễm"
+                android:text="@string/strbinhiem"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="@color/Paragraph"
@@ -53,7 +54,7 @@
             <TextView
                 android:textColor="@color/Paragraph"
                 android:layout_marginTop="10dp"
-                android:text="Tử vong"
+                android:text="@string/strtuvong"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_width="wrap_content"
@@ -77,7 +78,7 @@
             <TextView
                 android:layout_marginTop="10dp"
                 android:textColor="@color/Paragraph"
-                android:text="Bình phục"
+                android:text="@string/strbinhphuc"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_width="wrap_content"
@@ -111,28 +112,35 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:text="Việt Nam"
-            android:textColor="@color/Paragraph"
+            android:textColor="@color/flag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <LinearLayout
             android:layout_marginLeft="15dp"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:paddingRight="@dimen/padding_covid"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/txtbinhiemVN"
-                android:text="Ca nhiễm: "
-                android:layout_width="wrap_content"
+                android:text="@string/strbinhiem"
+                android:textColor="@color/so"
+                android:background="@color/binhiem"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="Tử vong: "
+                android:text="@string/strtuvong"
                 android:id="@+id/txttuvongVN"
-                android:layout_width="wrap_content"
+                android:textColor="@color/so"
+                android:background="@color/tuvong"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="Bình phục: "
+                android:text="@string/strbinhphuc"
+                android:textColor="@color/so"
                 android:id="@+id/txtbinhphucVN"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:background="@color/binhphuc"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
@@ -151,28 +159,35 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:text="America  "
-            android:textColor="@color/Paragraph"
+            android:textColor="@color/flag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <LinearLayout
             android:layout_marginLeft="15dp"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingRight="@dimen/padding_covid"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/txtbinhiemUSA"
-                android:text="Ca nhiễm: "
-                android:layout_width="wrap_content"
+                android:text="@string/strbinhiem"
+                android:textColor="@color/so"
+                android:background="@color/binhiem"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="Tử vong: "
+                android:text="@string/strtuvong"
                 android:id="@+id/txttuvongUSA"
-                android:layout_width="wrap_content"
+                android:textColor="@color/so"
+                android:layout_width="match_parent"
+                android:background="@color/tuvong"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="Bình phục: "
+                android:text="@string/strbinhphuc"
                 android:id="@+id/txtbinhphucUSA"
-                android:layout_width="wrap_content"
+                android:background="@color/binhphuc"
+                android:textColor="@color/so"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
@@ -191,28 +206,35 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:text="Brazil       "
-            android:textColor="@color/Paragraph"
+            android:textColor="@color/flag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <LinearLayout
             android:layout_marginLeft="15dp"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingRight="@dimen/padding_covid"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/txtbinhiemBrazil"
-                android:text="Ca nhiễm: "
-                android:layout_width="wrap_content"
+                android:text="@string/strbinhiem"
+                android:background="@color/binhiem"
+                android:textColor="@color/so"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="Tử vong: "
+                android:text="@string/strtuvong"
                 android:id="@+id/txttuvongBrazil"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:background="@color/tuvong"
+                android:textColor="@color/so"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="Bình phục: "
+                android:text="@string/strbinhphuc"
                 android:id="@+id/txtbinhphucBrazil"
-                android:layout_width="wrap_content"
+                android:background="@color/binhphuc"
+                android:textColor="@color/so"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
@@ -232,28 +254,35 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:text="Russia     "
-            android:textColor="@color/Paragraph"
+            android:textColor="@color/flag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <LinearLayout
             android:layout_marginLeft="15dp"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingRight="@dimen/padding_covid"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/txtbinhiemRussia"
-                android:text="Ca nhiễm: "
-                android:layout_width="wrap_content"
+                android:text="@string/strbinhiem"
+                android:layout_width="match_parent"
+                android:background="@color/binhiem"
+                android:textColor="@color/so"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="Tử vong: "
+                android:text="@string/strtuvong"
                 android:id="@+id/txttuvongRussia"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:background="@color/tuvong"
+                android:textColor="@color/so"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="Bình phục: "
+                android:text="@string/strbinhphuc"
                 android:id="@+id/txtbinhphucRussia"
-                android:layout_width="wrap_content"
+                android:background="@color/binhphuc"
+                android:textColor="@color/so"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
@@ -273,28 +302,35 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="15dp"
             android:text="Spain      "
-            android:textColor="@color/Paragraph"
+            android:textColor="@color/flag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <LinearLayout
             android:layout_marginLeft="15dp"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingRight="@dimen/padding_covid"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/txtbinhiemSpain"
-                android:text="Ca nhiễm: "
-                android:layout_width="wrap_content"
+                android:text="@string/strbinhiem"
+                android:background="@color/binhiem"
+                android:textColor="@color/so"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="Tử vong: "
+                android:text="@string/strtuvong"
                 android:id="@+id/txttuvongSpain"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:background="@color/tuvong"
+                android:textColor="@color/so"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="Bình phục: "
+                android:text="@string/strbinhphuc"
                 android:id="@+id/txtbinhphucSpain"
-                android:layout_width="wrap_content"
+                android:background="@color/binhphuc"
+                android:textColor="@color/so"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 

@@ -69,6 +69,9 @@ public class FragmentClock extends Fragment {
         intent=new Intent(getActivity(), AlarmReceiver.class);
         loadCategory();
         loadDifficultyLevel();
+        btnHenGio.setEnabled(true);
+        btnDunglai.setEnabled(false);
+        edName.setEnabled(true);
         return view;
     }
 
@@ -83,7 +86,7 @@ public class FragmentClock extends Fragment {
                 int phut=timePicker.getCurrentMinute();
                 String str_gio=String.valueOf(gio);
                 String str_phut=String.valueOf(phut);
-                if(gio>12)
+                if(gio>=12)
                 {
                     str_gio=String.valueOf(gio-12);
                 }else
@@ -113,14 +116,24 @@ public class FragmentClock extends Fragment {
                 txtShowName.setText(name);
                 txtShowTime.setText(str_gio+":"+str_phut);
                 //DISABLE==========
-
-
+                btnHenGio.setEnabled(false);
+                btnDunglai.setEnabled(true);
+                edName.setEnabled(false);
+                spinnerCategory.setEnabled(false);
+                spinnerDifficulty.setEnabled(false);
+                timePicker.setEnabled(false);
             }
         });
         btnDunglai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 pendingIntent.cancel();
+                btnHenGio.setEnabled(true);
+                btnDunglai.setEnabled(false);
+                edName.setEnabled(true);
+                spinnerCategory.setEnabled(true);
+                spinnerDifficulty.setEnabled(true);
+                timePicker.setEnabled(true);
             }
         });
     }

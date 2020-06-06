@@ -378,7 +378,9 @@ public class MainActivity extends AppCompatActivity {
                     else
                     {
                         dialog.cancel();
-                        Intent intent=new Intent(MainActivity.this,ManagerActivity.class);
+                        /*Intent intent=new Intent(MainActivity.this,ManagerActivity.class);
+                        startActivity(intent);*/
+                        Intent intent=new Intent(MainActivity.this,ManagerActivity_Navigation.class);
                         startActivity(intent);
                         
                     }
